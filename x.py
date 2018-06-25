@@ -360,8 +360,8 @@ def lineBot(op):
                     pass
                 elif settings["protect"] == True:
                     ban["blacklist"][op.param2] = True
-                    k4.kickoutFromGroup(op.param1,[op.param2])
-                    k4.inviteIntoGroup(op.param1,[op.param3])
+                    k2.kickoutFromGroup(op.param1,[op.param2])
+                    k3.inviteIntoGroup(op.param1,[op.param3])
                 else:
                     cl.sendMessage(op.param1,"")
             else:
@@ -936,9 +936,9 @@ def lineBot(op):
                     for target in targets:
                         try:
                             cl.sendMessage(to,"滾")
-                            cl.kickoutFromGroup(msg.to,[target])
+                            ki.kickoutFromGroup(msg._from,[terget])
                         except:
-                            cl.sendMessage(to,"掰掰瞜")
+                            k2.sendMessage(to,"掰掰瞜")
                 
                 elif "Zk" in msg.text:
                     gs = cl.getGroup(to)
@@ -954,7 +954,10 @@ def lineBot(op):
                                 pass
                             else:
                                 try:
-                                    cl.kickoutFromGroup(to,[target])
+                                    k1.kickoutFromGroup(msg._from,[target])
+				    k2.kickoutFromGroup(msg._from,[target])
+				    k3.kickoutFromGroup(msg._from,[target])
+				    k4.kickoutFromGroup(msg._from,[target])
                                 except:
                                     pass
 
@@ -967,8 +970,8 @@ def lineBot(op):
                     for target in targets:
                         try:
                             cl.sendMessage(to,"來回機票一張")
-                            cl.kickoutFromGroup(msg.to,[target])
-                            cl.inviteIntoGroup(to,[target])
+                            k2.kickoutFromGroup(msg.to,[target])
+                            k3.inviteIntoGroup(to,[target])
                         except:
                             cl.sendMessage(to,"掰掰瞜")
                 elif text.lower() == 'byeall':
@@ -986,7 +989,10 @@ def lineBot(op):
                         else:
                             for target in targets:
                                 try:
-                                    cl.kickoutFromGroup(msg.to,[target])
+                                    k1.kickoutFromGroup(msg._from,[target])
+				    k2.kickoutFromGroup(msg._from,[target])
+				    k3.kickoutFromGroup(msg._from,[target])
+				    k4.kickoutFromGroup(msg._from,[target])
                                     print (msg.to,[g.mid])
                                 except:
                                     cl.sendMessage(msg.to,"")
@@ -1133,7 +1139,10 @@ def lineBot(op):
                         cl.sendMessage(msg.to,"此群組內無黑名單")
                         return
                     for jj in matched_list:
-                        cl.kickoutFromGroup(msg.to,[jj])
+			k1.kickoutFromGroup(msg._from,[jj])
+			k2.kickoutFromGroup(msg._from,[jj])
+			k3.kickoutFromGroup(msg._from,[jj])
+			k4.kickoutFromGroup(msg._from,[jj])
                     cl.sendMessage(msg.to,"黑名單已剔除")
                 elif text.lower() == 'cleanban':
                     for mi_d in ban["blacklist"]:
