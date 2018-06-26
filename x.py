@@ -39,7 +39,7 @@ BMID = k2.profile.mid
 CMID = k3.profile.mid
 DMID = k4.profile.mid
 
-KAC = [cl,k1,k2,k3,k4]
+KAC = [k1,k2,k3,k4]
 Bots = [clMID,AMID,BMID,CMID,DMID]
 
 clProfile = cl.getProfile()
@@ -267,7 +267,7 @@ def lineBot(op):
                     pass
                 else:
                     gs = cl.getGroup(op.param1)
-                    cl.kickoutFromGroup(op.param1,[op.param2])
+                    cl.kickoutFromGroup(op.param1, [op.param2])
                     gs.preventJoinByTicket = True
                     cl.updateGroup(gs)
 					
@@ -281,7 +281,7 @@ def lineBot(op):
                 if op.param2 in admin or op.param2 in ban["bots"]:
                     pass
                 else:
-                    cl.cancelGroupInvitation(op.param1,[op.param3])
+                    cl.cancelGroupInvitation(op.param1, [op.param3])
             else:
                 group = cl.getGroup(op.param1)
                 gInviMids = []
@@ -292,7 +292,7 @@ def lineBot(op):
                     pass
                 else:
                     cl.cancelGroupInvitation(op.param1, gInviMids)
-                    cl.sendMessage(op.param1,"被邀請者黑單中...")
+                    cl.sendMessage(op.param1, "被邀請者黑單中...")
 # ----------------- 有人退出群組時
         if op.type == 15:
             if settings["Lv"] == True:
@@ -354,14 +354,14 @@ def lineBot(op):
             try:
                 cl.sendMessage(op.param1, text, contentMetadata={'MENTION':str('{"MENTIONEES":'+json.dumps(zx2).replace(' ','')+'}')}, contentType=0)
             except:
-                cl.sendMessage(op.param1,"Notified kick out from group")
+                cl.sendMessage(op.param1, "Notified kick out from group")
             if op.param2 not in admin:
                 if op.param2 in ban["bots"]:
                     pass
                 elif settings["protect"] == True:
                     ban["blacklist"][op.param2] = True
-                    k2.kickoutFromGroup(op.param1,[op.param2])
-                    k3.inviteIntoGroup(op.param1,[op.param3])
+                    k2.kickoutFromGroup(op.param1, [op.param2])
+                    k3.inviteIntoGroup(op.param1, [op.param3])
                 else:
                     cl.sendMessage(op.param1,"")
             else:
@@ -408,13 +408,13 @@ def lineBot(op):
                 if text.lower() == 'help':
                     helpMessage = helpmessage()
                     cl.sendMessage(to, str(helpMessage))
-                    cl.sendContact(to,"uee73de5ab151138537c847f3e3a15217")
+                    cl.sendContact(to, "uee73de5ab151138537c847f3e3a15217")
                 if text.lower() == 'Help':
                     helpMessage = helpmessage()
                     cl.sendMessage(to, str(helpMessage))
-                    cl.sendContact(to,"uee73de5ab151138537c847f3e3a15217")
+                    cl.sendContact(to, "uee73de5ab151138537c847f3e3a15217")
                 elif text.lower() == 'bye':
-                    cl.sendMessage(to,"下次再見 如果只是測試和玩此功能 記得邀我回來 愛你/妳歐♥")
+                    cl.sendMessage(to, "下次再見 如果只是測試和玩此功能 記得邀我回來 愛你/妳歐♥")
                     cl.leaveGroup(msg.to)
 #==============================================================================#					
                 elif text.lower() == '報數':
@@ -435,15 +435,15 @@ def lineBot(op):
                 if text.lower() in ["集合"]:    
                     G = cl.getGroup(msg.to)
                     ginfo = cl.getGroup(msg.to)
-                    cl.sendMessage(to,"正在邀請 bot1、bot2、bot3、bot4中請稍後……")
+                    cl.sendMessage(to, "正在邀請 bot1、bot2、bot3、bot4中請稍後……")
                     G.preventedJoinByTicket = False
                     cl.updateGroup(G)
                     invsend = 0
                     Ticket = cl.reissueGroupTicket(msg.to)
-                    k1.acceptGroupInvitationByTicket(msg.to,Ticket)
-                    k2.acceptGroupInvitationByTicket(msg.to,Ticket)
-                    k3.acceptGroupInvitationByTicket(msg.to,Ticket)
-                    k4.acceptGroupInvitationByTicket(msg.to,Ticket)
+                    k1.acceptGroupInvitationByTicket(msg.to, Ticket)
+                    k2.acceptGroupInvitationByTicket(msg.to, Ticket)
+                    k3.acceptGroupInvitationByTicket(msg.to, Ticket)
+                    k4.acceptGroupInvitationByTicket(msg.to, Ticket)
                     G = cl.getGroup(msg.to)
                     G.preventedJoinByTicket = True
                     cl.updateGroup(G)
@@ -455,13 +455,13 @@ def lineBot(op):
                     start = time.time()
                     cl.sendMessage(to, "正在檢查中….請您耐心稍等一會兒…")
                     elapsed_time = time.time() - start
-                    cl.sendMessage(to,'處理速度\n' + str1 + '秒\n指令反應\n' + format(str(elapsed_time)) + '秒')
+                    cl.sendMessage(to, '處理速度\n' + str1 + '秒\n指令反應\n' + format(str(elapsed_time)) + '秒')
                 elif text.lower() == 'sp':
                     str1 = str(timeit.timeit('"-".join(str(n) for n in range(100))', number=10000))
                     start = time.time()
                     cl.sendMessage(to, "正在檢查中….請您耐心稍等一會兒…")
                     elapsed_time = time.time() - start
-                    cl.sendMessage(to,'處理速度\n' + str1 + '秒\n指令反應\n' + format(str(elapsed_time)) + '秒')
+                    cl.sendMessage(to, '處理速度\n' + str1 + '秒\n指令反應\n' + format(str(elapsed_time)) + '秒')
                 elif text.lower() == 'Speed':
                     str1 = str(timeit.timeit('"-".join(str(n) for n in range(100))', number=10000))
                     start = time.time()
@@ -473,11 +473,11 @@ def lineBot(op):
                     start = time.time()
                     cl.sendMessage(to, "正在檢查中….請您耐心稍等一會兒…")
                     elapsed_time = time.time() - start
-                    cl.sendMessage(to,'處理速度\n' + str1 + '秒\n指令反應\n' + format(str(elapsed_time)) + '秒')
+                    cl.sendMessage(to, '處理速度\n' + str1 + '秒\n指令反應\n' + format(str(elapsed_time)) + '秒')
 					
                 elif text.lower() == 'save':
                     backupData()
-                    cl.sendMessage(to,"儲存設定成功!")
+                    cl.sendMessage(to, "儲存設定成功!")
                 elif text.lower() == 'restart':
                     cl.sendMessage(to, "正在重新啟動中...請您耐心稍等一會兒…")
                     time.sleep(5)
@@ -491,7 +491,7 @@ def lineBot(op):
                 elif text.lower() == 'about':
                     try:
                         arr = []
-                        owner ="ua10c2ad470b4b6e972954e1140ad1891"
+                        owner = "ua10c2ad470b4b6e972954e1140ad1891"
                         creator = cl.getContact(owner)
                         contact = cl.getContact(clMID)
                         grouplist = cl.getGroupIdsJoined()
@@ -628,17 +628,17 @@ def lineBot(op):
 #==============進群和退群打開與關閉========================#
                 elif text.lower() == 'welcome on':
                     settings["Wc"] == True
-                    cl.sendMessage(to,"進群留言已打開")
+                    cl.sendMessage(to, "進群留言已打開")
                 elif text.lower() == 'welcome off':
                     settings["Wc"] == False
-                    cl.sendMessage(to,"進群留言已關閉")
+                    cl.sendMessage(to, "進群留言已關閉")
 
                 elif text.lower() == 'leave on':
                     settings["Lv"] == True
-                    cl.sendMessage(to,"退群留言已打開")
+                    cl.sendMessage(to, "退群留言已打開")
                 elif text.lower() == 'leave off':
                     settings["Lv"] == False
-                    cl.sendMessage(to,"退群留言已關閉")	
+                    cl.sendMessage(to, "退群留言已關閉")	
 #==============================================================================#
                 elif msg.text.lower().startswith("adminadd "):
                     MENTION = eval(msg.contentMetadata['MENTION'])
@@ -652,7 +652,7 @@ def lineBot(op):
                     cl.sendMessage(to, "已取消權限！")
                 elif text.lower() == 'adminlist':
                     if admin == []:
-                        cl.sendMessage(to,"無擁有權限者!")
+                        cl.sendMessage(to, "無擁有權限者!")
                     else:
                         mc = "╔══[ Admin List ]"
                         for mi_d in admin:
@@ -691,7 +691,7 @@ def lineBot(op):
                     cl.sendMessage(to, "已取消分機！")
                 elif text.lower() == 'botslist':
                     if ban["bots"] == []:
-                        cl.sendMessage(to,"無分機!")
+                        cl.sendMessage(to, "無分機!")
                     else:
                         mc = "╔══[ 分機清單如下： ]"
                         for mi_d in ban["bots"]:
@@ -704,7 +704,7 @@ def lineBot(op):
                 elif msg.text.lower().startswith("ii "):
                     MENTION = eval(msg.contentMetadata['MENTION'])
                     inkey = MENTION['MENTIONEES'][0]['M']
-                    cl.createGroup("滾",[inkey])
+                    cl.createGroup("滾", [inkey])
                     cl.leaveGroup(op.param1)
 #==============================================================================#
                 elif text.lower() == 'me':
@@ -800,10 +800,10 @@ def lineBot(op):
                     for target in targets:
                         try:
                             ban["mimic"]["target"][target] = True
-                            cl.sendMessage(msg.to,"已加入模仿名單!")
+                            cl.sendMessage(msg.to, "已加入模仿名單!")
                             break
                         except:
-                            cl.sendMessage(msg.to,"添加失敗 !")
+                            cl.sendMessage(msg.to, "添加失敗 !")
                             break
                 elif msg.text.lower().startswith("mimicdel "):
                     targets = []
@@ -814,14 +814,14 @@ def lineBot(op):
                     for target in targets:
                         try:
                             del settings["模仿名單"]["target"][target]
-                            cl.sendMessage(msg.to,"刪除成功 !")
+                            cl.sendMessage(msg.to, "刪除成功 !")
                             break
                         except:
-                            cl.sendMessage(msg.to,"刪除失敗 !")
+                            cl.sendMessage(msg.to, "刪除失敗 !")
                             break
                 elif text.lower() == 'mimiclist':
                     if ban["mimic"]["target"] == {}:
-                        cl.sendMessage(msg.to,"未設定模仿目標")
+                        cl.sendMessage(msg.to, "未設定模仿目標")
                     else:
                         mc = "╔══[ 模仿清單如下： ]"
                         for mi_d in ban["mimic"]["target"]:
@@ -936,7 +936,7 @@ def lineBot(op):
                     for target in targets:
                         try:
                             cl.sendMessage(to,"滾")
-                            ki.kickoutFromGroup(msg._from,[terget])
+                            ki.kickoutFromGroup(msg._from, [terget])
                         except:
                             k2.sendMessage(to,"掰掰瞜")
                 
@@ -954,10 +954,10 @@ def lineBot(op):
                                 pass
                             else:
                                 try:
-                                    k1.kickoutFromGroup(msg._from,[target])
-				    k2.kickoutFromGroup(msg._from,[target])
-				    k3.kickoutFromGroup(msg._from,[target])
-				    k4.kickoutFromGroup(msg._from,[target])
+                                    k1.kickoutFromGroup(msg._from, [target])
+				    k2.kickoutFromGroup(msg._from, [target])
+				    k3.kickoutFromGroup(msg._from, [target])
+				    k4.kickoutFromGroup(msg._from, [target])
                                 except:
                                     pass
 
@@ -970,46 +970,46 @@ def lineBot(op):
                     for target in targets:
                         try:
                             cl.sendMessage(to,"來回機票一張")
-                            k2.kickoutFromGroup(msg.to,[target])
-                            k3.inviteIntoGroup(to,[target])
+                            k2.kickoutFromGroup(msg.to, [target])
+                            k3.inviteIntoGroup(to, [target])
                         except:
-                            cl.sendMessage(to,"掰掰瞜")
+                            cl.sendMessage(to, "掰掰瞜")
                 elif text.lower() == 'byeall':
                     if msg.toType == 2:
                         print ("[ 19 ] KICK ALL MEMBER")
                         _name = msg.text.replace("Byeall","")
                         gs = cl.getGroup(msg.to)
-                        cl.sendMessage(msg.to,"Sorry guys")
+                        cl.sendMessage(msg.to, "Sorry guys")
                         targets = []
                         for g in gs.members:
                             if _name in g.displayName:
                                 targets.append(g.mid)
                         if targets == []:
-                            cl.sendMessage(msg.to,"Not Found")
+                            cl.sendMessage(msg.to, "Not Found")
                         else:
                             for target in targets:
                                 try:
-                                    k1.kickoutFromGroup(msg._from,[target])
-				    k2.kickoutFromGroup(msg._from,[target])
-				    k3.kickoutFromGroup(msg._from,[target])
-				    k4.kickoutFromGroup(msg._from,[target])
+                                    k1.kickoutFromGroup(msg._from, [target])
+				    k2.kickoutFromGroup(msg._from, [target])
+				    k3.kickoutFromGroup(msg._from, [target])
+				    k4.kickoutFromGroup(msg._from, [target])
                                     print (msg.to,[g.mid])
                                 except:
-                                    cl.sendMessage(msg.to,"")
+                                    cl.sendMessage(msg.to, "")
                 elif ("Gn " in msg.text):
                     if msg.toType == 2:
                         X = cl.getGroup(msg.to)
                         X.name = msg.text.replace("Gn ","")
                         cl.updateGroup(X)
                     else:
-                        cl.sendMessage(msg.to,"It can't be used besides the group.")
+                        cl.sendMessage(msg.to, "It can't be used besides the group.")
                 elif text.lower() == 'cancel':
                     if msg.toType == 2:
                         group = cl.getGroup(to)
                         gMembMids = [contact.mid for contact in group.invitee]
                     for _mid in gMembMids:
-                        cl.cancelGroupInvitation(msg.to,[_mid])
-                    cl.sendMessage(msg.to,"已取消所有邀請!")
+                        cl.cancelGroupInvitation(msg.to, [_mid])
+                    cl.sendMessage(msg.to, "已取消所有邀請!")
                 elif ("Inv " in msg.text):
                     if msg.toType == 2:
                         midd = msg.text.replace("Inv ","")
@@ -1040,7 +1040,7 @@ def lineBot(op):
                         pass
                     else:
                         for target in targets:
-                            sendMessageWithMention(to,target)
+                            sendMessageWithMention(to, target)
                 elif text.lower() == 'zm':
                     gs = cl.getGroup(to)
                     targets = []
@@ -1051,7 +1051,7 @@ def lineBot(op):
                         pass
                     else:
                         for mi_d in targets:
-                           cl.sendContect(to,mi_d)
+                           cl.sendContect(to, mi_d)
                 elif text.lower() == 'setread':
                     cl.sendMessage(msg.to, "已讀點設置成功")
                     try:
@@ -1062,7 +1062,7 @@ def lineBot(op):
                     now2 = datetime.now()
                     wait2['readPoint'][msg.to] = msg.id
                     wait2['readMember'][msg.to] = ""
-                    wait2['setTime'][msg.to] = datetime.strftime(now2,"%H:%M")
+                    wait2['setTime'][msg.to] = datetime.strftime(now2, "%H:%M")
                     wait2['ROM'][msg.to] = {}
                 elif text.lower() == "cancelread":
                     cl.sendMessage(to, "已讀點已刪除")
@@ -1094,18 +1094,18 @@ def lineBot(op):
                     for target in targets:
                         try:
                             ban["blacklist"][target] = True
-                            cl.sendMessage(msg.to,"已加入黑單!")
+                            cl.sendMessage(msg.to, "已加入黑單!")
                             break
                         except:
-                            cl.sendMessage(msg.to,"添加失敗 !")
+                            cl.sendMessage(msg.to, "添加失敗 !")
                             break
                 elif "Ban:" in msg.text:
                     mmtxt = text.replace("Ban:","")
                     try:
                         ban["blacklist"][mmtext] = True
-                        cl.sendMessage(msg.to,"已加入黑單!")
+                        cl.sendMessage(msg.to, "已加入黑單!")
                     except:
-                        cl.sendMessage(msg.to,"添加失敗 !")
+                        cl.sendMessage(msg.to, "添加失敗 !")
                 elif msg.text.lower().startswith("unban "):
                     targets = []
                     key = eval(msg.contentMetadata["MENTION"])
@@ -1115,14 +1115,14 @@ def lineBot(op):
                     for target in targets:
                         try:
                             del ban["blacklist"][target]
-                            cl.sendMessage(msg.to,"刪除成功 !")
+                            cl.sendMessage(msg.to, "刪除成功 !")
                             break
                         except:
-                            cl.sendMessage(msg.to,"刪除失敗 !")
+                            cl.sendMessage(msg.to, "刪除失敗 !")
                             break
                 elif text.lower() == 'banlist':
                     if ban["blacklist"] == {}:
-                        cl.sendMessage(msg.to,"無黑單成員!")
+                        cl.sendMessage(msg.to, "無黑單成員!")
                     else:
                         mc = "╔══[ 黑單清單如下： ]"
                         for mi_d in ban["blacklist"]:
@@ -1136,21 +1136,21 @@ def lineBot(op):
                     for tag in ban["blacklist"]:
                         matched_list+=filter(lambda str: str == tag, gMembMids)
                     if matched_list == []:
-                        cl.sendMessage(msg.to,"此群組內無黑名單")
+                        cl.sendMessage(msg.to, "此群組內無黑名單")
                         return
                     for jj in matched_list:
-			k1.kickoutFromGroup(msg._from,[jj])
-			k2.kickoutFromGroup(msg._from,[jj])
-			k3.kickoutFromGroup(msg._from,[jj])
-			k4.kickoutFromGroup(msg._from,[jj])
-                    cl.sendMessage(msg.to,"黑名單已剔除")
+			k1.kickoutFromGroup(msg._from, [jj])
+			k2.kickoutFromGroup(msg._from, [jj])
+			k3.kickoutFromGroup(msg._from, [jj])
+			k4.kickoutFromGroup(msg._from, [jj])
+                    cl.sendMessage(msg.to, "黑名單已剔除")
                 elif text.lower() == 'cleanban':
                     for mi_d in ban["blacklist"]:
                         ban["blacklist"] = {}
                     cl.sendMessage(to, "已清空黑名單")
                 elif text.lower() == 'banmidlist':
                     if ban["blacklist"] == {}:
-                        cl.sendMessage(msg.to,"無黑單成員!")
+                        cl.sendMessage(msg.to, "無黑單成員!")
                     else:
                         mc = "╔══[ 黑單清單如下： ]"
                         for mi_d in ban["blacklist"]:
@@ -1326,361 +1326,19 @@ def lineBot(op):
         if op.type == 19:
             print ("[ 19 ] KICKOUT NADYA MESSAGE")
             try:
-                if op.param3 in clMID:
-                    if op.param2 in AMID:
+                if op.param3 in Bots:
+                    if op.param2 in Bots:
                         G = k1.getGroup(op.param1)
 #                        ginfo = k1.getGroup(op.param1)
                         G.preventedJoinByTicket = False
                         k1.updateGroup(G)
                         invsend = 0
                         Ticket = k1.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k1.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k1.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k1.updateGroup(G)
-                    else:
-                        G = k1.getGroup(op.param1)
-#                        ginfo = k1.getGroup(op.param1)
-                        k1.kickoutFromGroup(op.param1,[op.param2])
-                        G.preventedJoinByTicket = False
-                        k1.updateGroup(G)
-                        invsend = 0
-                        Ticket = k1.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k1.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k1.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k1.updateGroup(G)
-                        settings["blacklist"][op.param2] = True
-#-------------------------------------------------------------------------------[clMID - BMID]
-                elif op.param3 in clMID:
-                    if op.param2 in BMID:
-                        G = k2.getGroup(op.param1)
-#                        ginfo = k2.getGroup(op.param1)
-                        G.preventedJoinByTicket = False
-                        k2.updateGroup(G)
-                        invsend = 0
-                        Ticket = k2.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k2.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k2.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k2.updateGroup(G)
-                    else:
-                        G = k2.getGroup(op.param1)
-#                        ginfo = k2.getGroup(op.param1)
-                        k2.kickoutFromGroup(op.param1,[op.param2])
-                        G.preventedJoinByTicket = False
-                        k2.updateGroup(G)
-                        invsend = 0
-                        Ticket = k2.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k2.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k2.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k2.updateGroup(G)
-                        settings["blacklist"][op.param2] = True
-#-------------------------------------------------------------------------------[clMID - CMID]
-                elif op.param3 in clMID:
-                    if op.param2 in CMID:
-                        G = k3.getGroup(op.param1)
-#                        ginfo = k3.getGroup(op.param1)
-                        G.preventedJoinByTicket = False
-                        k3.updateGroup(G)
-                        invsend = 0
-                        Ticket = k3.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k3.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k3.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k3.updateGroup(G)
-                    else:
-                        G = k3.getGroup(op.param1)
-#                        ginfo = k3.getGroup(op.param1)
-                        k3.kickoutFromGroup(op.param1,[op.param2])
-                        G.preventedJoinByTicket = False
-                        k3.updateGroup(G)
-                        invsend = 0
-                        Ticket = k3.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k3.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k3.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k3.updateGroup(G)
-                        settings["blacklist"][op.param2] = True
-#-------------------------------------------------------------------------------[clMID - DMID]
-                elif op.param3 in clMID:
-                    if op.param2 in DMID:
-                        G = k4.getGroup(op.param1)
-#                        ginfo = k4.getGroup(op.param1)
-                        G.preventedJoinByTicket = False
-                        k4.updateGroup(G)
-                        invsend = 0
-                        Ticket = k4.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k4.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k4.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k4.updateGroup(G)
-                    else:
-                        G = k4.getGroup(op.param1)
-#                        ginfo = k4.getGroup(op.param1)
-                        k4.kickoutFromGroup(op.param1,[op.param2])
-                        G.preventedJoinByTicket = False
-                        k4.updateGroup(G)
-                        invsend = 0
-                        Ticket = k4.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k4.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k4.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k4.updateGroup(G)
-                        settings["blacklist"][op.param2] = True
-#================================================[AMID clMID]
-                if op.param3 in AMID:
-                    if op.param2 in clMID:
-                        G = cl.getGroup(op.param1)
-#                        ginfo = cl.getGroup(op.param1)
-                        G.preventedJoinByTicket = False
-                        cl.updateGroup(G)
-                        invsend = 0
-                        Ticket = cl.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = cl.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        cl.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        cl.updateGroup(G)
-                    else:
-                        G = cl.getGroup(op.param1)
-#                        ginfo = cl.getGroup(op.param1)
-                        k1.kickoutFromGroup(op.param1,[op.param2])
-                        G.preventedJoinByTicket = False
-                        cl.updateGroup(G)
-                        invsend = 0
-                        Ticket = cl.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = cl.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        cl.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        cl.updateGroup(G)
-                        settings["blacklist"][op.param2] = True
-#-------------------------------------------------------------------------------[AMID BMID]
-                elif op.param3 in AMID:
-                    if op.param2 in BMID:
-                        G = k2.getGroup(op.param1)
-#                        ginfo = k2.getGroup(op.param1)
-                        G.preventedJoinByTicket = False
-                        k2.updateGroup(G)
-                        invsend = 0
-                        Ticket = k2.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k2.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k2.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k2.updateGroup(G)
-                    else:
-                        G = k2.getGroup(op.param1)
-#                        ginfo = k2.getGroup(op.param1)
-                        k2.kickoutFromGroup(op.param1,[op.param2])
-                        G.preventedJoinByTicket = False
-                        k2.updateGroup(G)
-                        invsend = 0
-                        Ticket = k2.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k2.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k2.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k2.updateGroup(G)
-                        settings["blacklist"][op.param2] = True
-#-------------------------------------------------------------------------------[AMID CMID]
-                elif op.param3 in AMID:
-                    if op.param2 in CMID:
-                        G = k3.getGroup(op.param1)
-#                        ginfo = k3.getGroup(op.param1)
-                        G.preventedJoinByTicket = False
-                        k3.updateGroup(G)
-                        invsend = 0
-                        Ticket = k3.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k3.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k3.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k3.updateGroup(G)
-                    else:
-                        G = k3.getGroup(op.param1)
-#                        ginfo = k3.getGroup(op.param1)
-                        k3.kickoutFromGroup(op.param1,[op.param2])
-                        G.preventedJoinByTicket = False
-                        k3.updateGroup(G)
-                        invsend = 0
-                        Ticket = k3.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k3.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k3.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k3.updateGroup(G)
-                        settings["blacklist"][op.param2] = True
-#-------------------------------------------------------------------------------[AMID DMID]
-                elif op.param3 in AMID:
-                    if op.param2 in DMID:
-                        G = k4.getGroup(op.param1)
-#                        ginfo = k4.getGroup(op.param1)
-                        G.preventedJoinByTicket = False
-                        k4.updateGroup(G)
-                        invsend = 0
-                        Ticket = k4.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k4.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k4.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k4.updateGroup(G)
-                    else:
-                        G = k4.getGroup(op.param1)
-#                        ginfo = k4.getGroup(op.param1)
-                        k4.kickoutFromGroup(op.param1,[op.param2])
-                        G.preventedJoinByTicket = False
-                        k4.updateGroup(G)
-                        invsend = 0
-                        Ticket = k4.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k4.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k4.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k4.updateGroup(G)
-                        settings["blacklist"][op.param2] = True
-#=====================================================[BMID clMID]
-                if op.param3 in BMID:
-                    if op.param2 in clMID:
-                        G = cl.getGroup(op.param1)
-#                        ginfo = cl.getGroup(op.param1)
-                        G.preventedJoinByTicket = False
-                        cl.updateGroup(G)
-                        invsend = 0
-                        Ticket = cl.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = cl.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        cl.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        cl.updateGroup(G)
-                    else:
-                        G = cl.getGroup(op.param1)
-#                        ginfo = cl.getGroup(op.param1)
-                        k1.kickoutFromGroup(op.param1,[op.param2])
-                        G.preventedJoinByTicket = False
-                        cl.updateGroup(G)
-                        invsend = 0
-                        Ticket = cl.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = cl.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        cl.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        cl.updateGroup(G)
-                        settings["blacklist"][op.param2] = True
-#-------------------------------------------------------------------------------[BMID AMID]
-                elif op.param3 in BMID:
-                    if op.param2 in AMID:
-                        G = k1.getGroup(op.param1)
-#                        ginfo = k1.getGroup(op.param1)
-                        G.preventedJoinByTicket = False
-                        k1.updateGroup(G)
-                        invsend = 0
-                        Ticket = k1.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
+                        cl.acceptGroupInvitationByTicket(op.param1, Ticket)
+                        k1.acceptGroupInvitationByTicket(op.param1, Ticket)
+                        k2.acceptGroupInvitationByTicket(op.param1, Ticket)
+                        k3.acceptGroupInvitationByTicket(op.param1, Ticket)
+                        k4.acceptGroupInvitationByTicket(op.param1, Ticket)
                         G = k1.getGroup(op.param1)
                         G.preventedJoinByTicket = True
                         k1.updateGroup(G)
@@ -1689,411 +1347,30 @@ def lineBot(op):
                     else:
                         G = k1.getGroup(op.param1)
 #                        ginfo = k1.getGroup(op.param1)
-                        k2.kickoutFromGroup(op.param1,[op.param2])
+                        random.choice(KAC).kickoutFromGroup(op.param1, [op.param2])
                         G.preventedJoinByTicket = False
                         k1.updateGroup(G)
                         invsend = 0
                         Ticket = k1.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
+                        cl.acceptGroupInvitationByTicket(op.param1, Ticket)
+                        k1.acceptGroupInvitationByTicket(op.param1, Ticket)
+                        k2.acceptGroupInvitationByTicket(op.param1, Ticket)
+                        k3.acceptGroupInvitationByTicket(op.param1, Ticket)
+                        k4.acceptGroupInvitationByTicket(op.param1, Ticket)
                         G = k1.getGroup(op.param1)
                         G.preventedJoinByTicket = True
                         k1.updateGroup(G)
                         G.preventedJoinByTicket(G)
                         k1.updateGroup(G)
                         settings["blacklist"][op.param2] = True
-#-------------------------------------------------------------------------------[BMID CMID]
-                elif op.param3 in BMID:
-                    if op.param2 in CMID:
-                        G = k3.getGroup(op.param1)
-#                        ginfo = k3.getGroup(op.param1)
-                        G.preventedJoinByTicket = False
-                        k3.updateGroup(G)
-                        invsend = 0
-                        Ticket = k3.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k3.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k3.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k3.updateGroup(G)
-                    else:
-                        G = k3.getGroup(op.param1)
-#                        ginfo = k3.getGroup(op.param1)
-                        k3.kickoutFromGroup(op.param1,[op.param2])
-                        G.preventedJoinByTicket = False
-                        k3.updateGroup(G)
-                        invsend = 0
-                        Ticket = k3.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k3.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k3.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k3.updateGroup(G)
-                        settings["blacklist"][op.param2] = True
-#-------------------------------------------------------------------------------[BMID DMID]
-                elif op.param3 in BMID:
-                    if op.param2 in DMID:
-                        G = k4.getGroup(op.param1)
-#                        ginfo = k4.getGroup(op.param1)
-                        G.preventedJoinByTicket = False
-                        k4.updateGroup(G)
-                        invsend = 0
-                        Ticket = k4.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k4.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k4.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k4.updateGroup(G)
-                    else:
-                        G = k4.getGroup(op.param1)
-#                        ginfo = k4.getGroup(op.param1)
-                        k4.kickoutFromGroup(op.param1,[op.param2])
-                        G.preventedJoinByTicket = False
-                        k4.updateGroup(G)
-                        invsend = 0
-                        Ticket = k4.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k4.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k4.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k4.updateGroup(G)
-                        settings["blacklist"][op.param2] = True
-#================================================[CMID clMID]
-                if op.param3 in CMID:
-                    if op.param2 in clMID:
-                        G = cl.getGroup(op.param1)
-#                        ginfo = cl.getGroup(op.param1)
-                        G.preventedJoinByTicket = False
-                        cl.updateGroup(G)
-                        invsend = 0
-                        Ticket = cl.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = cl.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        cl.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        cl.updateGroup(G)
-                    else:
-                        G = cl.getGroup(op.param1)
-#                        ginfo = cl.getGroup(op.param1)
-                        k1.kickoutFromGroup(op.param1,[op.param2])
-                        G.preventedJoinByTicket = False
-                        cl.updateGroup(G)
-                        invsend = 0
-                        Ticket = cl.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = cl.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        cl.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        cl.updateGroup(G)
-                        settings["blacklist"][op.param2] = True
-#-------------------------------------------------------------------------------[CMID AMID]
-                elif op.param3 in CMID:
-                    if op.param2 in AMID:
-                        G = k1.getGroup(op.param1)
-#                        ginfo = k1.getGroup(op.param1)
-                        G.preventedJoinByTicket = False
-                        k1.updateGroup(G)
-                        invsend = 0
-                        Ticket = k1.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k1.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k1.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k1.updateGroup(G)
-                    else:
-                        G = k1.getGroup(op.param1)
-#                        ginfo = k1.getGroup(op.param1)
-                        k2.kickoutFromGroup(op.param1,[op.param2])
-                        G.preventedJoinByTicket = False
-                        k1.updateGroup(G)
-                        invsend = 0
-                        Ticket = k1.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k1.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k1.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k1.updateGroup(G)
-                        settings["blacklist"][op.param2] = True
-#-------------------------------------------------------------------------------[CMID BMID]
-                elif op.param3 in CMID:
-                    if op.param2 in BMID:
-                        G = k2.getGroup(op.param1)
-#                        ginfo = k2.getGroup(op.param1)
-                        G.preventedJoinByTicket = False
-                        k2.updateGroup(G)
-                        invsend = 0
-                        Ticket = k2.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k2.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k2.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k2.updateGroup(G)
-                    else:
-                        G = k2.getGroup(op.param1)
-#                        ginfo = k2.getGroup(op.param1)
-                        k3.kickoutFromGroup(op.param1,[op.param2])
-                        G.preventedJoinByTicket = False
-                        k2.updateGroup(G)
-                        invsend = 0
-                        Ticket = k2.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k2.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k2.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k2.updateGroup(G)
-                        settings["blacklist"][op.param2] = True
-#-------------------------------------------------------------------------------[CMID DMID]
-                elif op.param3 in CMID:
-                    if op.param2 in DMID:
-                        G = k4.getGroup(op.param1)
-#                        ginfo = k4.getGroup(op.param1)
-                        G.preventedJoinByTicket = False
-                        k4.updateGroup(G)
-                        invsend = 0
-                        Ticket = k4.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k4.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k4.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k4.updateGroup(G)
-                    else:
-                        G = k4.getGroup(op.param1)
-#                        ginfo = k4.getGroup(op.param1)
-                        k4.kickoutFromGroup(op.param1,[op.param2])
-                        G.preventedJoinByTicket = False
-                        k4.updateGroup(G)
-                        invsend = 0
-                        Ticket = k4.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k4.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k4.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k4.updateGroup(G)
-                        settings["blacklist"][op.param2] = True
-#=====================================================[DMID clMID]
-                if op.param3 in DMID:
-                    if op.param2 in clMID:
-                        G = cl.getGroup(op.param1)
-#                        ginfo = cl.getGroup(op.param1)
-                        G.preventedJoinByTicket = False
-                        cl.updateGroup(G)
-                        invsend = 0
-                        Ticket = cl.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = cl.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        cl.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        cl.updateGroup(G)
-                    else:
-                        G = cl.getGroup(op.param1)
-#                        ginfo = cl.getGroup(op.param1)
-                        k1.kickoutFromGroup(op.param1,[op.param2])
-                        G.preventedJoinByTicket = False
-                        cl.updateGroup(G)
-                        invsend = 0
-                        Ticket = cl.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = cl.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        cl.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        cl.updateGroup(G)
-                        settings["blacklist"][op.param2] = True
-#-------------------------------------------------------------------------------[DMID AMID]
-                elif op.param3 in DMID:
-                    if op.param2 in AMID:
-                        G = k1.getGroup(op.param1)
-#                        ginfo = k1.getGroup(op.param1)
-                        G.preventedJoinByTicket = False
-                        k1.updateGroup(G)
-                        invsend = 0
-                        Ticket = k1.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k1.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k1.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k1.updateGroup(G)
-                    else:
-                        G = k1.getGroup(op.param1)
-#                        ginfo = k1.getGroup(op.param1)
-                        k2.kickoutFromGroup(op.param1,[op.param2])
-                        G.preventedJoinByTicket = False
-                        k1.updateGroup(G)
-                        invsend = 0
-                        Ticket = k1.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k1.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k1.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k1.updateGroup(G)
-                        settings["blacklist"][op.param2] = True
-#-------------------------------------------------------------------------------[DMID BMID]
-                elif op.param3 in DMID:
-                    if op.param2 in BMID:
-                        G = k2.getGroup(op.param1)
-#                        ginfo = k2.getGroup(op.param1)
-                        G.preventedJoinByTicket = False
-                        k2.updateGroup(G)
-                        invsend = 0
-                        Ticket = k2.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k2.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k2.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k2.updateGroup(G)
-                    else:
-                        G = k2.getGroup(op.param1)
-#                        ginfo = k2.getGroup(op.param1)
-                        k3.kickoutFromGroup(op.param1,[op.param2])
-                        G.preventedJoinByTicket = False
-                        k2.updateGroup(G)
-                        invsend = 0
-                        Ticket = k2.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k2.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k2.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k2.updateGroup(G)
-                        settings["blacklist"][op.param2] = True
-#-------------------------------------------------------------------------------[DMID CMID]
-                elif op.param3 in DMID:
-                    if op.param2 in CMID:
-                        G = k3.getGroup(op.param1)
-#                        ginfo = k3.getGroup(op.param1)
-                        G.preventedJoinByTicket = False
-                        k3.updateGroup(G)
-                        invsend = 0
-                        Ticket = k3.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k3.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k3.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k3.updateGroup(G)
-                    else:
-                        G = k3.getGroup(op.param1)
-#                        ginfo = k3.getGroup(op.param1)
-                        k4.kickoutFromGroup(op.param1,[op.param2])
-                        G.preventedJoinByTicket = False
-                        k3.updateGroup(G)
-                        invsend = 0
-                        Ticket = k3.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k1.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k2.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k3.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        k4.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G = k3.getGroup(op.param1)
-                        G.preventedJoinByTicket = True
-                        k3.updateGroup(G)
-                        G.preventedJoinByTicket(G)
-                        k3.updateGroup(G)
-                        settings["blacklist"][op.param2] = True
-                        
                 elif op.param2 not in Bots:
                     if op.param2 in admin:
                         pass
                     elif settings["protect"] == True:
                         settings["blacklist"][op.param2] = True
-                        random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
-                        random.choice(KAC).inviteIntoGroup(op.param1,[op.param3])
-                        random.choice(KAC).sendText(op.param1,"別輕易嘗試...!")
+                        random.choice(KAC).kickoutFromGroup(op.param1, [op.param2])
+                        random.choice(KAC).inviteIntoGroup(op.param1, [op.param3])
+                        random.choice(KAC).sendText(op.param1, "別輕易嘗試...!")
                         
                 else:
                     pass
