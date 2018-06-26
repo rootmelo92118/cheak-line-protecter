@@ -1329,7 +1329,6 @@ def lineBot(op):
                 if op.param3 in Bots:
                     if op.param2 in Bots:
                         G = k1.getGroup(op.param1)
-#                        ginfo = k1.getGroup(op.param1)
                         G.preventedJoinByTicket = False
                         k1.updateGroup(G)
                         invsend = 0
@@ -1346,7 +1345,6 @@ def lineBot(op):
                         k1.updateGroup(G)
                     else:
                         G = k1.getGroup(op.param1)
-#                        ginfo = k1.getGroup(op.param1)
                         random.choice(KAC).kickoutFromGroup(op.param1, [op.param2])
                         G.preventedJoinByTicket = False
                         k1.updateGroup(G)
