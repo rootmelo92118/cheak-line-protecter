@@ -1328,7 +1328,7 @@ def lineBot(op):
             try:
                 if op.param3 in Bots:
                     if op.param2 in Bots:
-			bot = random.choice(KAC)
+			bot = random.choice([k1,k2,k3,k4])
                         G = bot.getGroup(op.param1)
                         G.preventedJoinByTicket = False
                         bot.updateGroup(G)
