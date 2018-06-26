@@ -1328,26 +1328,27 @@ def lineBot(op):
             try:
                 if op.param3 in Bots:
                     if op.param2 in Bots:
-                        G = k1.getGroup(op.param1)
+			bot = random.choice(KAC)
+                        G = bot.getGroup(op.param1)
                         G.preventedJoinByTicket = False
-                        k1.updateGroup(G)
+                        bot.updateGroup(G)
                         invsend = 0
-                        Ticket = k1.reissueGroupTicket(op.param1)
+                        Ticket = bot.reissueGroupTicket(op.param1)
                         cl.acceptGroupInvitationByTicket(op.param1, Ticket)
                         k1.acceptGroupInvitationByTicket(op.param1, Ticket)
                         k2.acceptGroupInvitationByTicket(op.param1, Ticket)
                         k3.acceptGroupInvitationByTicket(op.param1, Ticket)
                         k4.acceptGroupInvitationByTicket(op.param1, Ticket)
-                        G = k1.getGroup(op.param1)
+                        G = bot.getGroup(op.param1)
                         G.preventedJoinByTicket = True
-                        k1.updateGroup(G)
+                        bot.updateGroup(G)
                         G.preventedJoinByTicket(G)
-                        k1.updateGroup(G)
+                        bot.updateGroup(G)
                     else:
-                        G = k1.getGroup(op.param1)
-                        random.choice(KAC).kickoutFromGroup(op.param1, [op.param2])
+                        G = bot.getGroup(op.param1)
+                        bot.kickoutFromGroup(op.param1, [op.param2])
                         G.preventedJoinByTicket = False
-                        k1.updateGroup(G)
+                        bot.updateGroup(G)
                         invsend = 0
                         Ticket = k1.reissueGroupTicket(op.param1)
                         cl.acceptGroupInvitationByTicket(op.param1, Ticket)
@@ -1355,11 +1356,11 @@ def lineBot(op):
                         k2.acceptGroupInvitationByTicket(op.param1, Ticket)
                         k3.acceptGroupInvitationByTicket(op.param1, Ticket)
                         k4.acceptGroupInvitationByTicket(op.param1, Ticket)
-                        G = k1.getGroup(op.param1)
+                        G = bot.getGroup(op.param1)
                         G.preventedJoinByTicket = True
-                        k1.updateGroup(G)
+                        bot.updateGroup(G)
                         G.preventedJoinByTicket(G)
-                        k1.updateGroup(G)
+                        bot.updateGroup(G)
                         settings["blacklist"][op.param2] = True
                 elif op.param2 not in Bots:
                     if op.param2 in admin:
